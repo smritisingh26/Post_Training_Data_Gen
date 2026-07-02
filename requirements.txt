@@ -1,0 +1,9 @@
+# Core (needed for stub/keyless run + tests)
+sympy>=1.12
+pyyaml>=6.0
+
+# Live path only (safe to omit for the keyless stub demo)
+openai>=1.0        # NIM solver via OpenAI-compatible endpoint
+anthropic>=0.40    # Claude judge/triage
+python-dotenv>=1.0 # loads NVIDIA_API_KEY / ANTHROPIC_API_KEY from .env
+# adaption          # Adaptive Data finisher (Adapt Labs SDK) - install if running Stage E

@@ -1,0 +1,794 @@
+{
+  "summary": {
+    "n": 13,
+    "admitted": 6,
+    "routes": {
+      "clean_solutions": 4,
+      "discard": 6,
+      "dataset": 2,
+      "negatives": 1
+    },
+    "signals_fired": {
+      "genuine_correction_missing": 2,
+      "llm_judge_fabricated": 5,
+      "llm_judge_compressed": 1,
+      "llm_judge_repetitive": 2,
+      "theatrical_correction": 1
+    }
+  },
+  "triage": [
+    {
+      "id": "count_div3or5",
+      "class": "solvable",
+      "verifiable": true,
+      "source": "llm",
+      "obstruction": null
+    },
+    {
+      "id": "count_div7or11",
+      "class": "solvable",
+      "verifiable": true,
+      "source": "llm",
+      "obstruction": null
+    },
+    {
+      "id": "count_div2_3_5_7",
+      "class": "solvable",
+      "verifiable": true,
+      "source": "llm",
+      "obstruction": null
+    },
+    {
+      "id": "count_mod7rem3_negrange",
+      "class": "solvable",
+      "verifiable": true,
+      "source": "llm",
+      "obstruction": null
+    },
+    {
+      "id": "count_div4or6_not12",
+      "class": "solvable",
+      "verifiable": true,
+      "source": "llm",
+      "obstruction": null
+    },
+    {
+      "id": "rh_first_five",
+      "class": "impossible",
+      "verifiable": false,
+      "source": "registry",
+      "obstruction": "The Riemann Hypothesis is an open problem; no known proof exists. Finite zero-checking is a numerical verification, not a proof of the hypothesis."
+    },
+    {
+      "id": "three_body_exact",
+      "class": "impossible",
+      "verifiable": false,
+      "source": "registry",
+      "obstruction": "The general n-body (n>=3) problem has no closed-form solution; only special solutions (restricted problem, Lagrange points, Jacobi integral) exist."
+    },
+    {
+      "id": "underspecified_triangle",
+      "class": "ill_posed",
+      "verifiable": false,
+      "source": "llm",
+      "obstruction": "No dimensions, coordinates, or any other information about the triangle are provided, making the problem unsolvable."
+    }
+  ],
+  "per_sample": [
+    {
+      "id": "opt1__count_div3or5",
+      "route": "clean_solutions",
+      "admit": true,
+      "reasons": [
+        "no correction needed, verifier-confirmed correct -> clean_solutions pool"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=877 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each step explicitly: dividing 1000 by 3, 5, and 15, taking floor values, and applying inclusion-exclusion with the arithmetic shown."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response progresses linearly through finding multiples of 3, then 5, then 15, then combining them, without circling back to restate any point."
+        }
+      ]
+    },
+    {
+      "id": "opt3__injected_repair__count_div3or5",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "theatrical correction -> routed to labeled-negatives pile",
+        "verifier-confirmed genuine correction, but explanation didn't clearly demonstrate grounding -> not fabricated (excluded from negatives), not clearly explained enough for dataset -> discard"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": true,
+          "evidence": "resp_markers=0 grounded=0 thought_markers=0"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=760 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each step of the inclusion-exclusion calculation explicitly, including the individual counts and the final arithmetic."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": true,
+          "evidence": "The response claims the prior used 63 as the subtracted value, but the prior clearly states '333 + 200 - 63 = 470', and the response correctly identifies 66 as the right count but then produces 467 in"
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response moves linearly from identifying the error to presenting the corrected calculation without circling back to restate the same point."
+        }
+      ]
+    },
+    {
+      "id": "opt1__count_div7or11",
+      "route": "clean_solutions",
+      "admit": true,
+      "reasons": [
+        "no correction needed, verifier-confirmed correct -> clean_solutions pool"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=4"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=568 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each division step explicitly, rounds down with justification, and applies inclusion-exclusion with all arithmetic visible."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response moves linearly through three distinct calculations and a final combination step without revisiting any point."
+        }
+      ]
+    },
+    {
+      "id": "opt3__injected_repair__count_div7or11",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "theatrical correction -> routed to labeled-negatives pile",
+        "verifier-confirmed genuine correction, but explanation didn't clearly demonstrate grounding -> not fabricated (excluded from negatives), not clearly explained enough for dataset -> discard"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "resp_markers=1 grounded=3 thought_markers=0"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=1 grounded_anchors=6"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=912 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each step explicitly: computing multiples of 7, 11, and 77, then applying inclusion-exclusion, with no skipped derivations."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": true,
+          "evidence": "The response claims the prior claim's correction (adding 6 back) is 'unnecessary and incorrect,' which is a real and specific error in the prior claim, making the self-correction load-bearing and subs"
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response progresses logically from restating the method to computing each count to reaching the final answer without circling back redundantly."
+        }
+      ]
+    },
+    {
+      "id": "opt1__count_div2_3_5_7",
+      "route": "clean_solutions",
+      "admit": true,
+      "reasons": [
+        "no correction needed, verifier-confirmed correct -> clean_solutions pool"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=4"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=2065 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows every step of the inclusion-exclusion calculation explicitly, including all individual counts, pairwise, triple, and quadruple intersections, and the final arithmetic."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response progresses systematically through each level of inclusion-exclusion without circling back to re-derive any previously established result."
+        }
+      ]
+    },
+    {
+      "id": "opt3__injected_repair__count_div2_3_5_7",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "hard block: llm_judge_compressed (The response simply restates the prior claim's steps and arithmetic without independently verifying or re-deriving any calculation.)"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=4"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=781 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": true,
+          "evidence": "The response simply restates the prior claim's steps and arithmetic without independently verifying or re-deriving any calculation."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response has a clear structure: a brief endorsement, a numbered summary of steps, the final calculation, and a conclusion, which is organized rather than circularly repetitive."
+        }
+      ]
+    },
+    {
+      "id": "opt1__count_mod7rem3_negrange",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "theatrical correction -> routed to labeled-negatives pile",
+        "no correction surfaced and NOT verifier-confirmed correct -> discard"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=6648 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows repeated arithmetic steps explicitly, subtracting 7 repeatedly and listing each intermediate value rather than summarizing."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": true,
+          "evidence": "The response claims the prior answer of 34 is wrong and arrives at 28, but the prior claim's count of 34 (from -39 to 192 with step 7) is actually correct: (192-(-39))/7 + 1 = 34, so the 'correction' "
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": true,
+          "evidence": "The response endlessly repeats the pattern 'we can start the sequence from 199 - 7 - 7 - ... and end it at 192' dozens of times without making any new progress toward the answer."
+        }
+      ]
+    },
+    {
+      "id": "opt1__count_div4or6_not12",
+      "route": "clean_solutions",
+      "admit": true,
+      "reasons": [
+        "no correction needed, verifier-confirmed correct -> clean_solutions pool"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=6"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=1151 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each arithmetic step explicitly, including the subtraction of multiples of 12 from each set and the final addition."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response progresses logically through distinct steps\u2014finding multiples of 4, multiples of 6, multiples of 12, then computing the two filtered sets and summing them\u2014without circling back to restate"
+        }
+      ]
+    },
+    {
+      "id": "opt3__injected_repair__count_div4or6_not12",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "theatrical correction -> routed to labeled-negatives pile",
+        "verifier-confirmed genuine correction, but explanation didn't clearly demonstrate grounding -> not fabricated (excluded from negatives), not clearly explained enough for dataset -> discard"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": true,
+          "evidence": "resp_markers=0 grounded=0 thought_markers=0"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=3"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=858 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each step explicitly: dividing 300 by 4, 6, and 12, then subtracting multiples of 12 from each set, and adding the results."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": true,
+          "evidence": "The response claims the prior claim's final step '50 + 25 - 25 = 50' is wrong and that no further subtraction is needed, but the prior claim's subtraction of 25 at the end was itself erroneous reasoni"
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response moves forward from restating the setup to identifying the alleged error and computing a new final answer without looping back."
+        }
+      ]
+    },
+    {
+      "id": "opt2__rh_first_five",
+      "route": "discard",
+      "admit": false,
+      "reasons": [
+        "hard block: llm_judge_repetitive (The response repeatedly asserts the same conclusion\u2014that numerical verification is not a proof and that the RH remains unsolved\u2014across multiple sections ('Why a Proof is Impossible', 'Numerical Verifi)"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=impossible claim_phrases=0 hedges=3"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=2718 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response does not attempt any mathematical derivation; it explains why a proof is impossible and describes the problem at a conceptual level, which is appropriate for an ill-posed instruction."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": true,
+          "evidence": "The response repeatedly asserts the same conclusion\u2014that numerical verification is not a proof and that the RH remains unsolved\u2014across multiple sections ('Why a Proof is Impossible', 'Numerical Verifi"
+        }
+      ]
+    },
+    {
+      "id": "opt2__three_body_exact",
+      "route": "dataset",
+      "admit": true,
+      "reasons": [],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=impossible claim_phrases=0 hedges=2"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=2499 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response does not attempt a derivation at all, so there is nothing to compress; it correctly explains why no closed-form solution exists and supports that conclusion from multiple angles."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait,' 'actually,' or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response progresses through distinct sections\u2014impossibility, historical proof, special solutions, and conclusion\u2014each adding new information rather than circling back to restate the same point."
+        }
+      ]
+    },
+    {
+      "id": "opt2__underspecified_triangle",
+      "route": "dataset",
+      "admit": true,
+      "reasons": [],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared none)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": false,
+          "evidence": "markers=0 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=ill_posed claim_phrases=0 hedges=1"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=1283 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response contains no derivation to compress; it correctly identifies the problem as ill-posed and explains why from multiple angles without skipping any steps."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": false,
+          "evidence": "There is no self-correction language such as 'wait', 'actually', or 'let me reconsider' anywhere in the response."
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "While the response restates the 'unsolvable' conclusion across multiple sections, this is organized report-style structure appropriate for an ill-posed problem, not a degenerate loop failing to make p"
+        }
+      ]
+    },
+    {
+      "id": "opt3__theatrical_negative__opt1__count_div3or5",
+      "route": "negatives",
+      "admit": false,
+      "reasons": [
+        "theatrical correction -> routed to labeled-negatives pile"
+      ],
+      "signals": [
+        {
+          "name": "genuine_correction_missing",
+          "flag": false,
+          "evidence": "n/a (declared theatrical)"
+        },
+        {
+          "name": "theatrical_correction",
+          "flag": true,
+          "evidence": "markers=3 grounded_anchors=0"
+        },
+        {
+          "name": "fabricated_rigor",
+          "flag": false,
+          "evidence": "class=solvable claim_phrases=0 hedges=0"
+        },
+        {
+          "name": "compression",
+          "flag": false,
+          "evidence": "handwave_phrases=0"
+        },
+        {
+          "name": "meta_leak",
+          "flag": false,
+          "evidence": "meta_phrases=0"
+        },
+        {
+          "name": "length_efficiency",
+          "flag": false,
+          "evidence": "len=1030 (ok)"
+        },
+        {
+          "name": "llm_judge_compressed",
+          "flag": false,
+          "evidence": "The response shows each step explicitly: dividing 1000 by 3, 5, and 15, taking floor values, and applying inclusion-exclusion with the arithmetic shown."
+        },
+        {
+          "name": "llm_judge_fabricated",
+          "flag": true,
+          "evidence": "The self-correction ('wait, actually, let me reconsider') claims to recheck multiples of 3 but identifies no actual error and changes nothing, making it a hollow dramatic pause rather than a substanti"
+        },
+        {
+          "name": "llm_judge_repetitive",
+          "flag": false,
+          "evidence": "The response moves steadily through distinct steps (divisible by 3, divisible by 5, divisible by 15, inclusion-exclusion) without circling back to re-derive the same point."
+        }
+      ]
+    }
+  ]
+}

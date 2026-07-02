@@ -1,0 +1,24 @@
+# Calibration Pilot config.
+# Model slugs live here on purpose: NIM catalog slugs change, so CONFIRM the current
+# string at build.nvidia.com/models before a live run rather than hunting through code.
+
+providers:
+  # Solver / saboteur -> NVIDIA NIM (free tier, OpenAI-compatible). Error-prone-but-
+  # coherent by design: a mid-tier model slips on mid-difficulty problems, giving real
+  # corrections to harvest. A frontier model would one-shot everything and starve yield.
+  solver_model: "meta/llama-3.1-70b-instruct"   # <-- verify slug on your NIM dashboard
+  saboteur_model: "meta/llama-3.1-8b-instruct"  # deliberately WEAKER than solver_model; verify slug
+  nim_base_url: "https://integrate.api.nvidia.com/v1"
+
+  # Judge / triage -> Anthropic (kept sharp; judge errors = mislabeled data).
+  judge_model: "claude-sonnet-4-6"
+
+pilot:
+  # Even split across problem classes (no weighting), ~matches the given data's families.
+  target_samples: 30
+  seeds_path: "data/seeds/seeds.json"
+  out_dir: "data/samples"
+
+harness:
+  length_lo: 200
+  length_hi: 20000

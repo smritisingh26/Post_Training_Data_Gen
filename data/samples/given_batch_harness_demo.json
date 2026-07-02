@@ -1,0 +1,30 @@
+{
+  "description": "Black-box harness run on the 30 ORIGINAL given samples (a batch the pipeline did NOT generate).",
+  "summary": {
+    "n": 30,
+    "admitted": 4,
+    "routes": {
+      "negatives": 26,
+      "dataset": 4
+    },
+    "signals_fired": {
+      "theatrical_correction": 26,
+      "fabricated_rigor": 4,
+      "meta_leak": 6,
+      "compression": 2,
+      "length_efficiency": 1
+    }
+  },
+  "fabricated_rigor_ids": [
+    "given_04_id8",
+    "given_10_id16",
+    "given_15_id0",
+    "given_19_id8"
+  ],
+  "admitted_ids": [
+    "given_02_id1",
+    "given_07_id9",
+    "given_24_id11",
+    "given_25_id4"
+  ]
+}
